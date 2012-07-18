@@ -70,17 +70,17 @@ public class Tree {
 			for (int i = 0; i < finalPath.length(); i++) {
 				c = pathReader.read();
 				switch (c) {
-				case ('F'):/* 한 유니트 선 */
-				case ('f'): /* 선을 그으며 앞으로 */
-					newCursor.x = cursor.x + Math.cos(cursor.angle); // 엑스 좌표
-					newCursor.y = cursor.y + Math.sin(cursor.angle); // 와이 좌표
+				case ('F'):
+				case ('f'):
+					newCursor.x = cursor.x + Math.cos(cursor.angle); 
+					newCursor.y = cursor.y + Math.sin(cursor.angle); 
 					newCursor.angle = cursor.angle;
 					graphics.drawLine(getXCoord(cursor.x), getYCoord(cursor.y),getXCoord(newCursor.x), getYCoord(newCursor.y));
 					cursor.x = newCursor.x;
 					cursor.y = newCursor.y;
 					break;
-				case ('P'):/* 한 유니트 선 */
-				case ('p'): /* 현재 위치에 점을 찍는다. */
+				case ('P'):
+				case ('p'):
 					graphics.fillOval(getXCoord(cursor.x) - 2,
 							getYCoord(cursor.y) - 2, 4, 4);
 					break;
@@ -120,7 +120,7 @@ public class Tree {
 	}
 
 	public int getYCoord(double y) {
-		float p = ((float) height // height
+		float p = ((float) height 
 				)
 				/ ((float) (yMax - yMin));
 		return (int) ((y - yMin) * p) + 5;
@@ -137,10 +137,10 @@ public class Tree {
 			for (int i = 0; i < finalPath.length(); i++) {
 				c = pathReader.read();
 				switch (c) {
-				case ('F'): /* 선을 그으며 앞으로 */
-				case ('f'): /* 선을 그으며 앞으로 */
-				case ('G'): /* 선을 긋지 腑한 유니트 */
-				case ('g'): /* 선을 긋지 腑한 유니트 */
+				case ('F'): 
+				case ('f'): 
+				case ('G'): 
+				case ('g'): 
 					cursor.x += Math.cos(cursor.angle);
 					if (cursor.x > xMax)
 						xMax = cursor.x;
@@ -152,24 +152,24 @@ public class Tree {
 					else if (cursor.y < yMin)
 						yMin = cursor.y;
 					break;
-				case ('<'): /* 왼쪽으로 각도만큼 돈다 */
+				case ('<'):
 					cursor.angle += -angle;
 					while (cursor.angle >= (2 * Math.PI))
 						cursor.angle -= (2 * Math.PI);
 					break;
-				case ('>'): /* 오른쪽으로 돈다 */
+				case ('>'):
 					cursor.angle -= -angle;
 					while (cursor.angle < 0)
 						cursor.angle += (2 * Math.PI);
 					break;
 				case ('p'):
-				case ('P'): /* 점 찍는다 */
+				case ('P'):
 					cursor.type = 10;
 					break;
-				case ('['): /* 브랜치 시작 */
+				case ('['):
 					cursorStack.push(new Tstate(cursor));
 					break;
-				case (']'): /* 브랜치 끝 */
+				case (']'):
 					cursor = cursorStack.pop();
 				default:
 					break;
