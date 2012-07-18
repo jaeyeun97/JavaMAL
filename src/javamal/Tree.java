@@ -96,7 +96,8 @@ public class Tree {
 					break;
 				case ('>'):
 					cursor.angle -= -angle;
-					while (cursor.angle < 0)
+					while(cursor.angle < 0)
+						cursor.angle+=(2*Math.PI);
 						break;
 				case ('['):
 					cursor.angle += (2 * Math.PI);	
